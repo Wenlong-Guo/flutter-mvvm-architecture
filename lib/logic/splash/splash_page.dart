@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter_mvvm_architecture/import.dart';
+import 'package:flutter_mvvm_architecture/logic/home/home_page.dart';
 
 import 'splash_view_model.dart';
 
@@ -13,7 +16,15 @@ class SplashPage extends BasePage<SplashViewModel> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    Future.delayed(
+        const Duration(seconds: 3), () => Get.offAndToNamed(HomePage.route));
+    return Center(
+        child: Column(children: <Widget>[
+      Image.asset(
+        "assets/images/3.0x/native_splash.png",
+        // "assets/images/native_splash_3.png",
+        alignment: Alignment.topCenter,
+      )
+    ]));
   }
 }

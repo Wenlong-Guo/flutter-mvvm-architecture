@@ -12,7 +12,7 @@ import 'logic/splash/splash_view_model.dart';
 /// * Date:        2022/6/22 3:08
 /// * Email:       guowenlong20000@sina.com
 class Routes {
-  static const initial = HomePage.route;
+  static const initial = SplashPage.route;
 
   static final List<GetPage> routes = [
     GetPage(

@@ -28,7 +28,6 @@ class HomePage extends BasePage<HomeViewModel> {
             const Text(
               'by 郭文龙',
             ),
-
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.

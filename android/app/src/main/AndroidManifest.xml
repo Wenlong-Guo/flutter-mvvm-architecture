@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.github.guowenlong.cats.flutter_mvvm_architecture">
+    package="io.github.guowenlong.anime.flutter_mvvm_architecture">
    <application
         android:label="flutter_mvvm_architecture"
         android:name="${applicationName}"

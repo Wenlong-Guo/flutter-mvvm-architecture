@@ -46,7 +46,10 @@ class HomePage extends BasePage<HomeViewModel> {
               controller.currentIndex.value = index;
             },
           ),
-          body: pages[controller.currentIndex.toInt()],
+          body: IndexedStack(
+            index: controller.currentIndex.value,
+            children: pages,
+          ),
         ));
   }
 }

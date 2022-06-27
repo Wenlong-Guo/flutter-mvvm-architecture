@@ -21,7 +21,7 @@ class Resource<T> {
       Function(Response<dynamic> value) json) async {
     var response =
         await future().then((value) => json(value)).catchError((error) {
-      return Resource(null, NetworkError(error));
+      return Resource<T>(null, NetworkError(error));
     });
     return Resource(response, null);
   }

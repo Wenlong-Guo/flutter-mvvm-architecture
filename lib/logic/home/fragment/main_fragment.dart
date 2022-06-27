@@ -1,3 +1,4 @@
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_mvvm_architecture/import.dart';
 import 'package:flutter_mvvm_architecture/logic/home/home_view_model.dart';
 
@@ -10,16 +11,32 @@ class MainPage extends BasePage<HomeViewModel> {
 
   @override
   Widget build(BuildContext context) {
-    controller.getHome();
-    return Obx(() => Container(
-          color: const Color(0xFFEFEFEF),
-          child: ListView.builder(
-            itemCount: controller.listSize.value,
-            itemBuilder: (context, index) {
-              return getItem(index);
-            },
+    controller.getHome(0);
+    return Obx(
+      () => Scaffold(
+          appBar: AppBar(
+            toolbarHeight: 0,
           ),
-        ));
+          body: Container(
+              color: const Color(0xFFEFEFEF),
+              child: EasyRefresh(
+                enableControlFinishRefresh: true,
+                enableControlFinishLoad: true,
+                controller: controller.controller,
+                child: ListView.builder(
+                  itemCount: controller.listSize.value,
+                  itemBuilder: (context, index) {
+                    return getItem(index);
+                  },
+                ),
+                onRefresh: () async {
+                  controller.getHome(0);
+                },
+                onLoad: () async {
+                  controller.getHome(controller.currentPage + 1);
+                },
+              ))),
+    );
   }
 
   Widget getItem(int index) {

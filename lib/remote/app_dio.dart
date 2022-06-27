@@ -6,7 +6,8 @@ import 'package:dio/adapter.dart';
 /// * Date:        2022/6/5 19:26
 /// * Email:       guowenlong20000@sina.com
 class AppDio with DioMixin implements Dio {
-  static const baseUrl = "https://cat-fact.herokuapp.com";
+  // static const baseUrl = "https://cat-fact.herokuapp.com";
+  static const baseUrl = "https://api.jikan.moe/v4";
   static const connectTimeout = 30 * 1000;
   static const receiveTimeout = 30 * 1000;
   static const sendTimeout = 30 * 1000;
@@ -21,7 +22,7 @@ class AppDio with DioMixin implements Dio {
       receiveTimeout: receiveTimeout,
       sendTimeout: sendTimeout,
     );
-
+    interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
     this.options = options;
     //公共投
     //拦截器

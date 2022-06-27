@@ -12,43 +12,27 @@ import 'route.dart';
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return ScreenUtilInit(
-  //     designSize: const Size(360, 690),
-  //     minTextAdapt: true,
-  //     splitScreenMode: true,
-  //     builder: (context, child) {
-  //       return GetMaterialApp(
-  //         debugShowCheckedModeBanner: false,
-  //         enableLog: true,
-  //         initialRoute: Routes.initial,
-  //         theme: ThemeData(
-  //           brightness: Brightness.light,
-  //         ),
-  //         getPages: Routes.routes,
-  //         translations: Language(),
-  //         locale: Language.locale,
-  //         fallbackLocale: Language.fallbackLocale,
-  //         builder: EasyLoading.init(),
-  //       );
-  //     },
-  //   );
-  // }
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      enableLog: true,
-      initialRoute: Routes.initial,
-      theme: ThemeData(
-        brightness: Brightness.light,
-      ),
-      getPages: Routes.routes,
-      translations: Language(),
-      locale: Language.locale,
-      fallbackLocale: Language.fallbackLocale,
-      builder: EasyLoading.init(),
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          enableLog: true,
+          initialRoute: Routes.initial,
+          theme: ThemeData(
+            brightness: Brightness.light,
+          ),
+          getPages: Routes.routes,
+          translations: Language(),
+          locale: Language.locale,
+          fallbackLocale: Language.fallbackLocale,
+          builder: EasyLoading.init(),
+        );
+      },
     );
   }
 }

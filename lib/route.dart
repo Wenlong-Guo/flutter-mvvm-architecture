@@ -1,6 +1,7 @@
 import 'package:flutter_mvvm_architecture/import.dart';
 import 'package:flutter_mvvm_architecture/logic/home/home_view_model.dart';
 import 'package:flutter_mvvm_architecture/logic/splash/splash_page.dart';
+import 'package:flutter_mvvm_architecture/repository/home_repository.dart';
 
 import 'logic/home/home_page.dart';
 import 'logic/login/login_page.dart';
@@ -12,7 +13,7 @@ import 'logic/splash/splash_view_model.dart';
 /// * Date:        2022/6/22 3:08
 /// * Email:       guowenlong20000@sina.com
 class Routes {
-  static const initial = SplashPage.route;
+  static const initial = HomePage.route;
 
   static final List<GetPage> routes = [
     GetPage(
@@ -23,9 +24,10 @@ class Routes {
         })),
     GetPage(
         name: HomePage.route,
-        page: () => const HomePage(),
+        page: () => HomePage(),
         binding: BindingsBuilder(() {
           Get.lazyPut<HomeViewModel>(() => HomeViewModel());
+          Get.lazyPut<HomeRepository>(() => HomeRepository());
         })),
     GetPage(
         name: LoginPage.route,

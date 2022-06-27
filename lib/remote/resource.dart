@@ -19,11 +19,10 @@ class Resource<T> {
   static Future<Resource<T>> convert<T>(
       Future<Response<dynamic>> Function() future,
       Function(Response<dynamic> value) json) async {
-    try {
-      var response = await future().then((value) => json(value));
-      return Resource(response, null);
-    } on Exception catch (e) {
-      return Resource(null, NetworkError(e));
-    }
+    var response =
+        await future().then((value) => json(value)).catchError((error) {
+      return Resource(null, NetworkError(error));
+    });
+    return Resource(response, null);
   }
 }
